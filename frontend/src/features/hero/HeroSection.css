@@ -1,0 +1,240 @@
+/* ── Outer wrapper: full viewport, 2 panels side by side ── */
+.hero {
+  display: grid;
+  grid-template-columns: 1.20fr 0.80fr;  /* kiri lebih lebar, kanan sempit = portrait */
+  height: 100vh;
+  min-height: 580px;
+  padding: 0.65rem;    /* outer padding lebih kecil */
+  gap: 0.65rem;
+  background: var(--white); /* Outer menjadi putih agar gutter terlihat */
+}
+
+/* ══════════════════════════════════════════
+   LEFT PANEL
+══════════════════════════════════════════ */
+.hero__left {
+  background: #f4f5f7; /* Background panel kiri menjadi abu-abu muda */
+  border-radius: 24px;
+  padding: 9rem 5rem 4rem 5rem;   /* Padding atas diperbesar untuk memberi ruang bagi navbar absolut */
+  position: relative; /* Menjadi acuan posisi absolut navbar */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Mini Navbar */
+.hero__left-nav {
+  position: absolute;
+  top: 2.2rem; /* Disesuaikan agar sejajar dengan kanan */
+  left: 4.5rem;
+  right: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.hero__logo-icon {
+  width: 36px; height: 36px;
+  background: var(--dark);
+  color: #fff;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+.hero__logo-text {
+  font-size: 0.72rem;
+  color: var(--text);
+  line-height: 1.35;
+}
+.hero__logo-text strong { font-weight: 700; color: var(--dark); }
+
+.hero__nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+.hero__nav-link {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--muted);
+  border-radius: 8px;
+  transition: background .2s, color .2s;
+}
+.hero__nav-link:hover { background: var(--light-gray); color: var(--dark); }
+
+/* Main Content */
+.hero__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;   /* lebih rapat karena panel luar sudah besar paddingnya */
+  gap: 1.5rem;
+  max-width: 580px; /* Batasi lebar teks agar proporsional */
+}
+.hero__title {
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  font-weight: 900;
+  color: var(--dark);
+  line-height: 1.1;
+}
+.hero__title-mark {
+  /* Underline highlight like the reference */
+  position: relative;
+  display: inline;
+}
+.hero__title-mark::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 1px;
+  width: 100%; height: 7px;
+  background: #fbbf24;
+  border-radius: 4px;
+  z-index: -1;
+}
+.hero__desc {
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 400px;
+  line-height: 1.7;
+}
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 0.9rem 2rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  border-radius: 50px; /* pill shape — matches reference */
+  transition: background .2s, transform .15s, box-shadow .2s;
+}
+.hero__cta:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.2);
+}
+
+/* Stats row at bottom */
+.hero__stats {
+  display: flex;
+  gap: 1.25rem;
+  padding-top: 2rem;
+  flex-wrap: wrap;
+}
+.hero__stat { 
+  background: #fff; /* Card stat berwarna putih */
+  padding: 2.25rem 1.5rem 1.25rem; /* Ruang dalam card */
+  border-radius: 20px;
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.3rem; 
+  position: relative; /* Untuk avatar bertumpuk */
+  flex: 1; /* Agar lebar merata */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.hero__stat-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  position: absolute;
+  top: -21px; /* Setengah bagian di luar card */
+  left: 20px;
+}
+.hero__stat-value {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--dark);
+  line-height: 1;
+}
+.hero__stat-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  max-width: 100px;
+  line-height: 1.4;
+}
+
+/* ══════════════════════════════════════════
+   RIGHT PANEL — portrait (tinggi > lebar)
+══════════════════════════════════════════ */
+.hero__right {
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Photo fills entire right panel */
+.hero__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Floating action bar on top of photo */
+.hero__right-bar {
+  position: absolute;
+  top: 2.2rem; /* Disamakan dengan navbar kiri */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 50px;
+  padding: 0.5rem 0.75rem 0.5rem 0.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,.12);
+  white-space: nowrap;
+}
+.hero__right-cta {
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  transition: background .2s;
+}
+.hero__right-cta:hover { background: var(--accent-hover); }
+.hero__right-phone {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--dark);
+  padding-right: 0.5rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 100svh;
+  }
+  .hero__right { height: 50vw; min-height: 300px; border-radius: 20px; }
+  .hero__nav-links { display: none; }
+  .hero__content { padding: 1.5rem 0 1.25rem; }
+}
+@media (max-width: 480px) {
+  .hero { padding: 0.5rem; gap: 0.5rem; }
+  .hero__left { padding: 1.25rem; padding-top: 4rem; border-radius: 18px; }
+  .hero__left-nav { top: 1.25rem; left: 1.25rem; right: 1.25rem; }
+  .hero__right { border-radius: 18px; }
+  .hero__stats { gap: 1.25rem; }
+}
