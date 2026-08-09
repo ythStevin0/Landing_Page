@@ -42,7 +42,7 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #93c5fd 35%, #3b82f6 85%, #1d4ed8 100%);
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #00c3ff 35%, #2394b7 85%, #1a7895 100%);
   box-shadow: inset -2px -2px 4px rgba(0,0,0,0.2), 1px 2px 4px rgba(0,0,0,0.1);
 }
 .navbar__brand-text {

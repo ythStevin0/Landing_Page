@@ -1,0 +1,86 @@
+.flow-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  overflow: hidden;
+  border-radius: 100px;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  padding: 0.9rem 2.5rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
+  text-decoration: none;
+  width: fit-content;
+}
+
+.flow-btn:hover {
+  border-color: transparent;
+  color: var(--primary);
+}
+
+.flow-btn:active {
+  transform: scale(0.95);
+}
+
+.flow-btn__arrow-left {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  left: -25%;
+  stroke: #fff;
+  fill: none;
+  z-index: 9;
+  transition: all 800ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.flow-btn:hover .flow-btn__arrow-left {
+  left: 1.2rem;
+  stroke: var(--primary);
+}
+
+.flow-btn__text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-0.75rem);
+  transition: all 800ms ease-out;
+}
+.flow-btn:hover .flow-btn__text {
+  transform: translateX(0.75rem);
+}
+
+.flow-btn__circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 0;
+}
+.flow-btn:hover .flow-btn__circle {
+  width: 300px;
+  height: 300px;
+  opacity: 1;
+}
+
+.flow-btn__arrow-right {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  right: 1.25rem;
+  stroke: #fff;
+  fill: none;
+  z-index: 9;
+  transition: all 800ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.flow-btn:hover .flow-btn__arrow-right {
+  right: -25%;
+  stroke: var(--primary);
+}

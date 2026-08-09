@@ -26,7 +26,7 @@
 }
 .about__frame-overlay {
   padding: 1rem 2rem 1.5rem;
-  background: var(--accent);
+  background: var(--primary);
   color: #fff;
 }
 .about__frame-text {
@@ -48,7 +48,7 @@
   align-items: flex-start;
   gap: 1.25rem;
   padding: 1.5rem 1.75rem;
-  background: var(--accent);
+  background: var(--primary);
   border-radius: var(--radius-md);
   transition: transform .25s, box-shadow .25s;
 }

@@ -113,18 +113,19 @@
 .m-card__btn {
   padding: 0.55rem 1rem;
   border-radius: 50px;
-  background: linear-gradient(135deg, #0284c7, #0369a1);
+  background: var(--accent);
   color: #fff;
   font-size: 0.8rem;
   font-weight: 600;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 195, 255, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
 }
 .m-card__btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
+  background: var(--accent-hover);
+  box-shadow: 0 6px 16px rgba(0, 195, 255, 0.4);
 }
 
 /* Modal styles */

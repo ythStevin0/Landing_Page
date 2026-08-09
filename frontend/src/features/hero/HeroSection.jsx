@@ -1,4 +1,5 @@
 import heroImg from '../../assets/hero-house.png';
+import { FlowButton } from '../../shared/components/FlowButton';
 import './HeroSection.css';
 
 const NAV_LINKS = ['Layanan', 'Portfolio', 'Material', 'FAQ'];
@@ -48,9 +49,7 @@ export default function HeroSection() {
             Kami membangun rumah premium dengan material terbaik dan teknologi
             konstruksi modern. Dari konsultasi hingga serah terima kunci.
           </p>
-          <button className="hero__cta" onClick={() => scrollTo('#kontak')}>
-            Konsultasi Gratis →
-          </button>
+          <FlowButton text="Konsultasi Gratis" href="#kontak" />
         </div>
 
         {/* Stats */}
