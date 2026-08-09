@@ -11,8 +11,10 @@
   
   /* Kombinasi Klien */
   --dark:        #171717; /* Hitam pekat untuk teks heading & footer */
-  --accent:      #2563eb; /* Biru utama untuk tombol / elemen interaktif */
-  --accent-hover:#1d4ed8; /* Biru gelap untuk hover tombol */
+  --primary:     #2394B7; /* Teal Blue Dominan dari referensi */
+  --primary-hover:#1A7895;
+  --accent:      #00C3FF; /* Cyan Terang Pelengkap dari referensi */
+  --accent-hover:#00A8DD;
 
   --font-heading: 'Outfit', sans-serif;
   --font-body:    'Inter', sans-serif;
