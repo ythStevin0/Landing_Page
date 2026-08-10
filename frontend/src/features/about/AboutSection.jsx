@@ -1,4 +1,5 @@
 import { ShieldCheck, Zap, TreePine } from 'lucide-react';
+import { motion } from 'framer-motion';
 import './AboutSection.css';
 
 const FEATURES = [
@@ -52,7 +53,14 @@ export default function AboutSection() {
         {/* ── Right: Feature Cards ── */}
         <div className="about__features">
           {FEATURES.map(({ Icon, title, desc }, i) => (
-            <div key={i} className="about__card">
+            <motion.div 
+              key={i} 
+              className="about__card"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
+            >
               <div className="about__card-icon">
                 <Icon size={22} strokeWidth={2} />
               </div>
@@ -60,7 +68,7 @@ export default function AboutSection() {
                 <h3 className="about__card-title">{title}</h3>
                 <p className="about__card-desc">{desc}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
