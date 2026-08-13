@@ -14,15 +14,11 @@
   border: 1px solid var(--border);
   background: var(--white);
 }
-.about__frame-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  padding: 2rem;
-}
-.about__frame-cell {
-  height: 40px;
-  border: 1px solid var(--border);
+.about__frame-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
 }
 .about__frame-overlay {
   padding: 1rem 2rem 1.5rem;

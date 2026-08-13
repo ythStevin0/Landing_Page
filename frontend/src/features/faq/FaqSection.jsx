@@ -10,12 +10,20 @@ const FAQS = [
   { q: 'Bagaimana cara memulai proyek pembangunan?', a: 'Hubungi kami melalui form kontak atau WhatsApp. Tim kami akan menjadwalkan survei lokasi gratis, kemudian menyiapkan RAB dan proposal desain dalam 3-5 hari kerja.' },
 ];
 
+import { motion } from 'framer-motion';
+
 export default function FaqSection() {
   const [open, setOpen] = useState(null);
   return (
     <section className="faq section" id="faq">
       <div className="container faq__inner">
-        <div className="faq__left">
+        <motion.div 
+          className="faq__left"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
           <span className="section-label">FAQ</span>
           <h2 className="section-title">Pertanyaan yang Sering Ditanyakan</h2>
           <p className="section-desc" style={{ marginTop: '1rem' }}>
@@ -25,8 +33,14 @@ export default function FaqSection() {
             onClick={(e) => { e.preventDefault(); document.querySelector('#kontak')?.scrollIntoView({ behavior: 'smooth' }); }}>
             Tanya Langsung →
           </a>
-        </div>
-        <div className="faq__list">
+        </motion.div>
+        <motion.div 
+          className="faq__list"
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+        >
           {FAQS.map((item, i) => (
             <div key={i} className={`faq__item ${open === i ? 'faq__item--open' : ''}`}>
               <button className="faq__question" onClick={() => setOpen(open === i ? null : i)}>
@@ -38,7 +52,7 @@ export default function FaqSection() {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

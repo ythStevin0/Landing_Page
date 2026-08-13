@@ -1,11 +1,18 @@
 .material-section__head { margin-bottom: 3rem; }
 .material-section__head .section-title { margin-top: 0.5rem; }
 
-.material-section__grid {
+.material-section__bento {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
+  grid-auto-flow: dense;
 }
+
+.bento-large { grid-column: span 2; grid-row: span 2; }
+.bento-wide { grid-column: span 2; grid-row: span 1; }
+
+.bento-large .m-card__image-wrapper { aspect-ratio: 16/9; }
+.bento-wide .m-card__image-wrapper { aspect-ratio: 21/9; }
 
 .m-card {
   background: var(--white);
@@ -169,6 +176,54 @@
 .m-modal__close:hover {
   background: rgba(255,255,255,0.4);
 }
+/* ─── Floating Navigation ─── */
+.nav-float {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-float:hover {
+  background: var(--dark);
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+.nav-float--left { left: -70px; }
+.nav-float--right { right: -70px; }
+
+/* ─── Page Indicator ─── */
+.page-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+}
+.page-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: all 0.3s ease;
+}
+.page-dot.active {
+  background: var(--dark);
+  transform: scale(1.3);
+}
 
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -179,70 +234,24 @@
   to { transform: scale(1); opacity: 1; }
 }
 
-.carousel-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-.carousel-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--white);
-  border: 1px solid var(--border);
-  display: grid;
-  place-items: center;
-  color: var(--dark);
-  cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-.carousel-btn:hover {
-  background: var(--dark);
-  color: #fff;
-  border-color: var(--dark);
-}
-.carousel-dots {
-  display: flex;
-  gap: 0.5rem;
-}
-.carousel-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--border);
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: all 0.2s;
-}
-.carousel-dot.active {
-  background: var(--dark);
-  transform: scale(1.3);
+@media (max-width: 1200px) {
+  .nav-float--left { left: -20px; }
+  .nav-float--right { right: -20px; }
 }
 
-@media (max-width: 1100px) {
-  .material-section__grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 1024px) {
+  .material-section__bento { grid-template-columns: repeat(3, 1fr); }
+  .nav-float { width: 44px; height: 44px; }
 }
-@media (max-width: 600px) {
-  .material-section__grid { grid-template-columns: 1fr; }
+
+@media (max-width: 768px) {
+  .material-section__bento { grid-template-columns: repeat(2, 1fr); }
+  .bento-large, .bento-wide { grid-column: span 1; grid-row: auto; }
+  .bento-large .m-card__image-wrapper, .bento-wide .m-card__image-wrapper { aspect-ratio: 4/3; }
+}
+
+@media (max-width: 480px) {
+  .material-section__bento { grid-template-columns: 1fr; }
   .m-modal { padding: 1rem; }
   .m-modal__close { top: 1rem; right: 1rem; width: 40px; height: 40px; }
-}
-
-@keyframes slideInRight {
-  from { transform: translateX(30px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-@keyframes slideInLeft {
-  from { transform: translateX(-30px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-.slide-right {
-  animation: slideInRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.slide-left {
-  animation: slideInLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }

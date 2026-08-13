@@ -9,14 +9,22 @@ const REVIEWS = [
   { name: 'Hendro Wibowo', rating: 5, comment: 'Pelayanan yang profesional dari awal RAB hingga serah terima kunci. Sangat transparan soal harga material.' },
 ];
 
+import { motion } from 'framer-motion';
+
 export default function WhyUsSection() {
   return (
     <section className="whyus section" id="material">
       <div className="container">
-        <div className="whyus__head">
+        <motion.div 
+          className="whyus__head"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <span className="section-label">Ulasan Pelanggan</span>
           <h2 className="section-title">Apa Kata Mereka Tentang<br />Layanan Kami?</h2>
-        </div>
+        </motion.div>
       </div>
 
       <div className="marquee-wrapper">
