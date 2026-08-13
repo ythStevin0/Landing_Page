@@ -26,7 +26,13 @@ export default function AboutSection() {
       <div className="container about__inner">
 
         {/* ── Left ── */}
-        <div className="about__left">
+        <motion.div 
+          className="about__left"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <span className="section-label">Tentang Kami</span>
           <h2 className="section-title">
             Membangun dengan<br />Teknologi Modern
@@ -39,16 +45,16 @@ export default function AboutSection() {
 
           {/* Frame illustration */}
           <div className="about__frame">
-            <div className="about__frame-grid">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div key={i} className="about__frame-cell" />
-              ))}
-            </div>
+            <img 
+              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80" 
+              alt="Konstruksi SNI" 
+              className="about__frame-img"
+            />
             <div className="about__frame-overlay">
               <span className="about__frame-text">Konstruksi Terstandar SNI</span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* ── Right: Feature Cards ── */}
         <div className="about__features">

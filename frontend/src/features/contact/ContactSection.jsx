@@ -3,6 +3,8 @@ import { Send, Phone, MapPin, Mail } from 'lucide-react';
 import api from '../../shared/services/api';
 import './ContactSection.css';
 
+import { motion } from 'framer-motion';
+
 const SERVICES = ['Jasa Bangun', 'Renovasi', 'Konsultasi', 'Info Material', 'Lainnya'];
 
 export default function ContactSection() {
@@ -28,7 +30,13 @@ export default function ContactSection() {
       <div className="container contact__inner">
 
         {/* ── Left Info ── */}
-        <div className="contact__info">
+        <motion.div 
+          className="contact__info"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <span className="section-label" style={{ color: 'rgba(255,255,255,.5)' }}>Hubungi Kami</span>
           <h2 className="section-title section-title--light">
             Konsultasikan<br />Proyek Anda
@@ -52,10 +60,17 @@ export default function ContactSection() {
               <span>Jl. Raya Bogor No.12, Jakarta Timur</span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* ── Right Form ── */}
-        <form className="contact__form" onSubmit={handleSubmit}>
+        <motion.form 
+          className="contact__form" 
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+        >
           <div className="contact__row">
             <div className="contact__field">
               <label htmlFor="contact-name">Nama Lengkap *</label>
@@ -98,17 +113,14 @@ export default function ContactSection() {
           )}
           {status === 'error' && (
             <div className="contact__alert contact__alert--error">
-              ❌ Gagal mengirim pesan. Silakan coba lagi.
+              ❌ Terjadi kesalahan. Silakan coba beberapa saat lagi.
             </div>
           )}
 
           <button type="submit" className="contact__submit" disabled={status === 'loading'}>
-            {status === 'loading' ? 'Mengirim...' : (
-              <><Send size={16} /> Kirim Pesan</>
-            )}
+            {status === 'loading' ? 'Mengirim...' : 'Kirim Pesan'} <Send size={18} />
           </button>
-        </form>
-
+        </motion.form>
       </div>
     </section>
   );

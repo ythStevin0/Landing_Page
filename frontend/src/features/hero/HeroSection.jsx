@@ -10,6 +10,21 @@ const STATS = [
   { img: heroImg, value: '500+', label: 'Klien puas di Indonesia' },
 ];
 
+import { motion } from 'framer-motion';
+
+const fadeUpVariant = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 }
+  }
+};
+
 export default function HeroSection() {
   const scrollTo = (id) => document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
 
@@ -17,10 +32,15 @@ export default function HeroSection() {
     <section className="hero" id="beranda">
 
       {/* ═══════════════ LEFT PANEL ═══════════════ */}
-      <div className="hero__left">
+      <motion.div 
+        className="hero__left"
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+      >
 
         {/* Mini Navbar — kiri */}
-        <div className="hero__left-nav">
+        <motion.div className="hero__left-nav" variants={fadeUpVariant}>
           <div className="hero__logo">
             <span className="hero__logo-icon">BGN</span>
             <span className="hero__logo-text">
@@ -36,24 +56,26 @@ export default function HeroSection() {
             ))}
             <button className="hero__nav-link" onClick={() => scrollTo('#kontak')}>Kontak</button>
           </nav>
-        </div>
+        </motion.div>
 
         {/* Main Content */}
         <div className="hero__content">
-          <h1 className="hero__title">
+          <motion.h1 className="hero__title" variants={fadeUpVariant}>
             Bangun Rumah Impian<br />
             mulai <span className="hero__title-mark">Rp&nbsp;3&nbsp;Juta</span>/m²<br />
             dalam 4 Bulan
-          </h1>
-          <p className="hero__desc">
+          </motion.h1>
+          <motion.p className="hero__desc" variants={fadeUpVariant}>
             Kami membangun rumah premium dengan material terbaik dan teknologi
             konstruksi modern. Dari konsultasi hingga serah terima kunci.
-          </p>
-          <FlowButton text="Konsultasi Gratis" href="#kontak" />
+          </motion.p>
+          <motion.div variants={fadeUpVariant}>
+            <FlowButton text="Konsultasi Gratis" href="#kontak" />
+          </motion.div>
         </div>
 
         {/* Stats */}
-        <div className="hero__stats">
+        <motion.div className="hero__stats" variants={fadeUpVariant}>
           {STATS.map(({ img, value, label }, i) => (
             <div key={i} className="hero__stat">
               <img src={img} alt="" className="hero__stat-avatar" />
@@ -61,8 +83,8 @@ export default function HeroSection() {
               <div className="hero__stat-label">{label}</div>
             </div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* ═══════════════ RIGHT PANEL ═══════════════ */}
       <div className="hero__right">
