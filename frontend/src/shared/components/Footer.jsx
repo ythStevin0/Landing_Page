@@ -32,7 +32,7 @@ export default function Footer() {
         <div className="footer__col">
           <h4>Kontak</h4>
           <ul>
-            <li>+62 812-3456-7890</li>
+            <li>+62 856-0486-7218</li>
             <li>info@bangungriya.com</li>
             <li>Jl. Raya Bogor No.12,<br />Jakarta Timur</li>
           </ul>

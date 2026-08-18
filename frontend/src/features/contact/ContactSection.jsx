@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Send, Phone, MapPin, Mail } from 'lucide-react';
-import api from '../../shared/services/api';
 import './ContactSection.css';
 
 import { motion } from 'framer-motion';
@@ -8,21 +7,35 @@ import { motion } from 'framer-motion';
 const SERVICES = ['Jasa Bangun', 'Renovasi', 'Konsultasi', 'Info Material', 'Lainnya'];
 
 export default function ContactSection() {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', service: '', message: '' });
-  const [status, setStatus] = useState(null); // 'loading' | 'success' | 'error'
+  const [form, setForm] = useState({ name: '', phone: '', service: '', message: '' });
 
   const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setStatus('loading');
-    try {
-      await api.post('/contacts', form);
-      setStatus('success');
-      setForm({ name: '', phone: '', email: '', service: '', message: '' });
-    } catch {
-      setStatus('error');
-    }
+    
+    // Nomor WhatsApp Tujuan (Ganti dengan nomor admin/perusahaan yang sebenarnya)
+    const targetPhone = '6285604867218'; 
+    
+    // Format pesan template
+    const textTemplate = `Halo Bangun Griya Nusantara,
+Saya tertarik untuk berdiskusi lebih lanjut.
+
+*Nama:* ${form.name}
+*No. WA:* ${form.phone}
+*Keperluan:* ${form.service}
+
+*Pesan/Keterangan:*
+${form.message}`;
+
+    // Encode teks agar valid untuk URL
+    const encodedText = encodeURIComponent(textTemplate);
+    
+    // Buka WhatsApp di tab baru
+    window.open(`https://wa.me/${targetPhone}?text=${encodedText}`, '_blank');
+    
+    // Reset form opsional setelah diklik
+    setForm({ name: '', phone: '', service: '', message: '' });
   };
 
   return (
@@ -49,7 +62,7 @@ export default function ContactSection() {
           <div className="contact__details">
             <div className="contact__detail">
               <Phone size={18} />
-              <span>+62 812-3456-7890</span>
+              <span>+62 856-0486-7218</span>
             </div>
             <div className="contact__detail">
               <Mail size={18} />
@@ -85,12 +98,7 @@ export default function ContactSection() {
           </div>
 
           <div className="contact__row">
-            <div className="contact__field">
-              <label htmlFor="contact-email">Email (opsional)</label>
-              <input id="contact-email" name="email" type="email" placeholder="budi@email.com"
-                value={form.email} onChange={handleChange} />
-            </div>
-            <div className="contact__field">
+            <div className="contact__field" style={{ width: '100%' }}>
               <label htmlFor="contact-service">Keperluan *</label>
               <select id="contact-service" name="service" value={form.service} onChange={handleChange} required>
                 <option value="">Pilih layanan...</option>
@@ -106,19 +114,8 @@ export default function ContactSection() {
               value={form.message} onChange={handleChange} required />
           </div>
 
-          {status === 'success' && (
-            <div className="contact__alert contact__alert--success">
-              ✅ Pesan berhasil dikirim! Kami akan menghubungi Anda segera.
-            </div>
-          )}
-          {status === 'error' && (
-            <div className="contact__alert contact__alert--error">
-              ❌ Terjadi kesalahan. Silakan coba beberapa saat lagi.
-            </div>
-          )}
-
-          <button type="submit" className="contact__submit" disabled={status === 'loading'}>
-            {status === 'loading' ? 'Mengirim...' : 'Kirim Pesan'} <Send size={18} />
+          <button type="submit" className="contact__submit">
+            Kirim via WhatsApp <Send size={18} />
           </button>
         </motion.form>
       </div>
