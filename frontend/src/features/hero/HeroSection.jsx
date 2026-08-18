@@ -94,8 +94,9 @@ export default function HeroSection() {
           <button className="hero__right-cta" onClick={() => scrollTo('#kontak')}>
             ✦ Konsultasi Gratis
           </button>
-          <a href="tel:+6281234567890" className="hero__right-phone">
-            📞 +62 812-3456-7890
+          {/* Phone Highlight */}
+          <a href="tel:+6285604867218" className="hero__right-phone">
+            📞 +62 856-0486-7218
           </a>
         </div>
 
