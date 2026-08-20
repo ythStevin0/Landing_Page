@@ -38,7 +38,7 @@ export default function AboutSection() {
             Membangun dengan<br />Teknologi Modern
           </h2>
           <p className="section-desc" style={{ marginTop: '1.25rem' }}>
-            Bangun Griya Nusantara adalah kontraktor berpengalaman yang bergerak di
+            Bangun Griya Nuswantara adalah kontraktor berpengalaman yang bergerak di
             bidang pembangunan rumah tinggal, renovasi, dan penyediaan material
             bangunan berkualitas di seluruh Indonesia.
           </p>

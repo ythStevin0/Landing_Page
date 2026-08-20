@@ -44,7 +44,7 @@ export default function HeroSection() {
           <div className="hero__logo">
             <span className="hero__logo-icon">BGN</span>
             <span className="hero__logo-text">
-              Bangun Griya<br /><strong>Nusantara</strong>
+              Bangun Griya<br /><strong>Nuswantara</strong>
             </span>
           </div>
           <nav className="hero__nav-links">
@@ -103,7 +103,7 @@ export default function HeroSection() {
         {/* Full photo */}
         <img
           src={heroImg}
-          alt="Rumah modern Bangun Griya Nusantara"
+          alt="Rumah modern Bangun Griya Nuswantara"
           className="hero__photo"
         />
       </div>

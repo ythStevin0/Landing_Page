@@ -18,7 +18,7 @@ export default function ContactSection() {
     const targetPhone = '6285604867218'; 
     
     // Format pesan template
-    const textTemplate = `Halo Bangun Griya Nusantara,
+    const textTemplate = `Halo Bangun Griya Nuswantara,
 Saya tertarik untuk berdiskusi lebih lanjut.
 
 *Nama:* ${form.name}

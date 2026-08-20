@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="footer__brand">
           <div className="footer__logo">
             <span className="footer__logo-icon">BGN</span>
-            <span className="footer__logo-text">Bangun Griya<br /><strong>Nusantara</strong></span>
+            <span className="footer__logo-text">Bangun Griya<br /><strong>Nuswantara</strong></span>
           </div>
           <p className="footer__tagline">Membangun impian Anda dengan kualitas terbaik dan integritas penuh.</p>
         </div>
@@ -40,7 +40,7 @@ export default function Footer() {
       </div>
       <div className="footer__bottom">
         <div className="container">
-          <p>© {year} Bangun Griya Nusantara. Semua hak dilindungi.</p>
+          <p>© {year} Bangun Griya Nuswantara. Semua hak dilindungi.</p>
         </div>
       </div>
     </footer>

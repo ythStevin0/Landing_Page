@@ -3,7 +3,7 @@ import './WhatsAppButton.css';
 const WA_NUMBER = '6285604867218'; // Ganti dengan nomor WA aktif
 
 export default function WhatsAppButton() {
-  const message = encodeURIComponent('Halo Bangun Griya Nusantara, saya ingin konsultasi mengenai jasa bangun/renovasi rumah.');
+  const message = encodeURIComponent('Halo Bangun Griya Nuswantara, saya ingin konsultasi mengenai jasa bangun/renovasi rumah.');
   return (
     <a
       href={`https://wa.me/${WA_NUMBER}?text=${message}`}
