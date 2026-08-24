@@ -32,23 +32,7 @@ const ALL_MATERIALS = [
   { image: 'https://images.unsplash.com/photo-1603503378564-9da2d8376991?auto=format&fit=crop&q=80', title: 'Toren Air', subtitle: 'Penampungan', desc: 'Tangki air kapasitas 1000 Liter dengan lapisan anti lumut.', price: 'Rp 1.200.000', unit: '/ unit' }
 ];
 
-const shatterContainer = {
-  hidden: { opacity: 0, scale: 0.4, transition: { duration: 0.4, ease: "easeInOut" } },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.1 }
-  }
-};
 
-const shatterItem = {
-  hidden: { opacity: 0, scale: 0 },
-  visible: { 
-    opacity: 1, 
-    scale: 1, 
-    transition: { type: 'spring', damping: 15, stiffness: 120 } 
-  }
-};
 
 export default function ServicesSection() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -89,51 +73,42 @@ export default function ServicesSection() {
             <ChevronRight size={24} />
           </button>
 
-          <AnimatePresence mode="wait">
-            <motion.div 
-              key={page}
-              className="material-section__bento"
-              variants={shatterContainer}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-            >
-              {displayedMaterials.map(({ image, title, subtitle, desc, price, unit }, i) => {
-                // Make some cards span 2 columns/rows for a Bento effect
-                let bentoClass = 'm-card';
-                if (i === 0 || i === 3) bentoClass += ' bento-large';
-                if (i === 4 || i === 7) bentoClass += ' bento-wide';
+          <div className="material-section__bento">
+            {displayedMaterials.map(({ image, title, subtitle, desc, price, unit }, i) => {
+              // Make some cards span 2 columns/rows for a Bento effect
+              let bentoClass = 'm-card';
+              if (i === 0 || i === 3) bentoClass += ' bento-large';
+              if (i === 4 || i === 7) bentoClass += ' bento-wide';
 
-                return (
-                  <motion.div key={i} className={bentoClass} variants={shatterItem}>
-                    <div className="m-card__image-wrapper">
-                      <img src={image} alt={title} className="m-card__image" />
-                    </div>
-                    <div className="m-card__body">
-                      <div className="m-card__header">
-                        <div>
-                          <h3 className="m-card__title">{title}</h3>
-                          <p className="m-card__subtitle">{subtitle}</p>
-                        </div>
-                        <button className="m-card__heart">
-                          <Heart size={15} />
-                        </button>
+              return (
+                <div key={i} className={bentoClass}>
+                  <div className="m-card__image-wrapper">
+                    <img src={image} alt={title} className="m-card__image" />
+                  </div>
+                  <div className="m-card__body">
+                    <div className="m-card__header">
+                      <div>
+                        <h3 className="m-card__title">{title}</h3>
+                        <p className="m-card__subtitle">{subtitle}</p>
                       </div>
-                      <p className="m-card__desc">{desc}</p>
-                      
-                      <div className="m-card__footer">
-                        <div className="m-card__price-wrap">
-                          <strong className="m-card__price">{price}</strong>
-                          <span className="m-card__unit">{unit}</span>
-                        </div>
-                        <button className="m-card__btn" onClick={() => setSelectedImage(image)}>See more</button>
-                      </div>
+                      <button className="m-card__heart">
+                        <Heart size={15} />
+                      </button>
                     </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </AnimatePresence>
+                    <p className="m-card__desc">{desc}</p>
+                    
+                    <div className="m-card__footer">
+                      <div className="m-card__price-wrap">
+                        <strong className="m-card__price">{price}</strong>
+                        <span className="m-card__unit">{unit}</span>
+                      </div>
+                      <button className="m-card__btn" onClick={() => setSelectedImage(image)}>See more</button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
           {/* Page Indicator */}
           <div className="page-indicator">
