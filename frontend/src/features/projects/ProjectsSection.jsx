@@ -32,23 +32,7 @@ const ALL_PROJECTS = [
   { img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80', title: 'Rumah Mewah 3 Lantai', location: 'Pondok Indah, JKT', rating: '5.0', reviews: 'Rp 8,5 Miliar', height: 380 }
 ];
 
-const shatterContainer = {
-  hidden: { opacity: 0, scale: 0.4, transition: { duration: 0.4, ease: "easeInOut" } },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.1 }
-  }
-};
 
-const shatterItem = {
-  hidden: { opacity: 0, scale: 0 },
-  visible: { 
-    opacity: 1, 
-    scale: 1, 
-    transition: { type: 'spring', damping: 15, stiffness: 120 } 
-  }
-};
 
 export default function ProjectsSection() {
   const [page, setPage] = useState(0);
@@ -94,17 +78,9 @@ export default function ProjectsSection() {
             <ChevronRight size={24} />
           </button>
 
-          <AnimatePresence mode="wait">
-            <motion.div 
-              key={page}
-              className="projects__masonry"
-              variants={shatterContainer}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-            >
+          <div className="projects__masonry">
             {displayedProjects.map((p, i) => (
-              <motion.div key={i} className="p-card" style={{ height: p.height }} variants={shatterItem}>
+              <div key={i} className="p-card" style={{ height: p.height }}>
                 <img src={p.img} alt={p.title} className="p-card__bg" />
                 <div className="p-card__overlay" />
                 
@@ -123,10 +99,9 @@ export default function ProjectsSection() {
                     <span style={{ opacity: 0.8 }}>{p.reviews}</span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
-        </AnimatePresence>
+          </div>
 
         {/* Page Indicator */}
         <div className="page-indicator">
